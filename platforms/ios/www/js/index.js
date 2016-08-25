@@ -33,8 +33,9 @@ var app = {
 app.initialize();
 
  var onSuccess = function(position) {
-     alert('Latitude: '          + position.coords.latitude          + '\n' +
-           'Longitude: '         + position.coords.longitude         + '\n');
+   var divTarget = document.getElementById('mylocation');
+     divTarget.innerHTML = 'Latitude: '          + position.coords.latitude          + '\n' +
+           'Longitude: '         + position.coords.longitude         + '\n';
  };
 
  // onError Callback receives a PositionError object
