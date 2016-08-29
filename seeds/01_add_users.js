@@ -14,7 +14,7 @@ exports.seed = function(knex, Promise) {
     knex('users').insert({
         username: 'jeffrey',
         password: bcrypt.hashSync('test', 8),
-        latitude: "40.024229",
+        latitude: "39.624229",
         longitude: "-105.262098"
     })
   );
