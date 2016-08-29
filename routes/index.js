@@ -35,13 +35,15 @@ router.get('/api/users', function (req,res,next) {
       res.json(userlatitude);
     }
   }).then(function(data){
+    var usermatched = data;
     knex('users_bands').where('user_id', data.id)
       .fullOuterJoin('bands', 'bands.id', 'users_bands.band_id').then(function(info) {
         var arr = [];
       for (var i = 0; i < info.length; i++) {
         arr.push(info[i].name);
       }
-      res.json(arr);
+      console.log(usermatched.username);
+      res.json("You matched with " + usermatched.username + " and you share these bands in common " + arr);
     });
   });
 });
