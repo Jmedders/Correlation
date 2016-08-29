@@ -19,7 +19,10 @@ exports.seed = function(knex, Promise) {
       name: 'my bloody valentine'
     }),
     knex('bands').insert({
-      name: 'ride'
+      name: 'pale saints'
+    }),
+    knex('bands').insert({
+      name: 'lush'
     })
   );
 };

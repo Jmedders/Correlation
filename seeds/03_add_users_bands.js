@@ -32,6 +32,14 @@ exports.seed = function(knex, Promise) {
       band_id: 5,
     }),
     knex('users_bands').insert({
+      user_id: 3,
+      band_id: 1,
+    }),
+    knex('users_bands').insert({
+      user_id: 3,
+      band_id: 7,
+    }),
+    knex('users_bands').insert({
       user_id: 2,
       band_id: 4,
     })

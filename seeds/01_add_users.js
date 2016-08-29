@@ -12,6 +12,12 @@ exports.seed = function(knex, Promise) {
         longitude: "-105.2839675"
     }),
     knex('users').insert({
+        username: 'dream',
+        password: bcrypt.hashSync('test', 8),
+        latitude: "40.0015967",
+        longitude: "-105.2939675"
+    }),
+    knex('users').insert({
         username: 'jeffrey',
         password: bcrypt.hashSync('test', 8),
         latitude: "39.624229",
