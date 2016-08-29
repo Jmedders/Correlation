@@ -8,14 +8,14 @@ exports.seed = function(knex, Promise) {
     knex('users').insert({
         username: 'test',
         password: bcrypt.hashSync('test', 8),
-        latitude: "37.785834",
-        longitude: "-122.406417"
+        latitude: "39.8915967",
+        longitude: "-105.2839675"
     }),
     knex('users').insert({
         username: 'jeffrey',
         password: bcrypt.hashSync('test', 8),
-        latitude: "30.024229",
-        longitude: "-100.262098"
+        latitude: "40.024229",
+        longitude: "-105.262098"
     })
   );
 };
