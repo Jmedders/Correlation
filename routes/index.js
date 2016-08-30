@@ -18,43 +18,62 @@ router.get('/api/users', function (req,res,next) {
     var querierlong = parseFloat(data[0].longitude);
     querierloc = new GeoPoint(querierlat, querierlong);
 
-    var obj = {};
     var wrapArr = [];
 
     for (var i = 0; i < data.length; i++) {
+      var obj = {};
       var userlatitude = parseFloat(data[i].latitude);
       var userlongitude = parseFloat(data[i].longitude);
       userlocation = new GeoPoint(userlatitude, userlongitude);
       var miles = querierloc.distanceTo(userlocation);
       var usersnames = data[i].username;
+      var userids = data[i].id;
       if(miles < 50){
-        userNameArr.push(usersnames);
-        milesArr.push(miles);
-        userInfoArr.push(data[i]);
-        obj.usersNames = userNameArr;
-        obj.distance = milesArr;
-        obj.usersInfo = userInfoArr;
+        obj.username = usersnames;
+        obj.distance = miles;
+        obj.userid = userids;
+        wrapArr.push(obj);
       } else {
         return 'no matches in your area'
       }
     }
-    // console.log('line 35', obj);
-    // console.log(userInfoArr);
-    // console.log(obj);
-    return obj
+    return wrapArr
   })
   .then(function(data){
-    var bandArr = [];
     // console.log(data);
-    // console.log(obj);
-    for (var i = 0; i < data['usersInfo'].length; i++) {
-      knex('users_bands').where('user_id', data['usersInfo'][i].id)
-        .fullOuterJoin('bands', 'bands.id', 'users_bands.band_id').then(function(info){
-          // console.log(info);
+    for (var i = 0; i < data.length; i++) {
+      console.log(i);
+      var bandArr = [];
+      knex('users_bands').where('user_id', data[i]['userid'])
+        .fullOuterJoin('bands', 'bands.id', 'users_bands.band_id').then(function (info) {
+          // console.log(data[i]);
+          // for (var j = 0; j < info.length; j++) {
+            console.log(info[3]['name']);
+          // }
+          console.log(bandArr);
         });
+        // console.log(bandArr);
+        data[i].bandNames = bandArr;
+        console.log(data);
     }
+    // console.log(data);
     res.json('hi');
-  //  var usermatched = data;
+
+    // [
+    //   {
+    //     username: '',
+    //     userid: num,
+    //     bandNames: [],
+    //     distance:
+    //   },
+    //   {
+    //     username: '',
+    //     userid: num,
+    //     bandNames: [],
+    //     distance:
+    //   }
+    // ]
+  //   var usermatched = data;
   //   knex('users_bands').where('user_id', data.id)
   //     .fullOuterJoin('bands', 'bands.id', 'users_bands.band_id').then(function(info) {
   //       var arr = [];
