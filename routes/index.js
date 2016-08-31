@@ -12,13 +12,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/api/users', function (req,res,next) {
+  var wrapArr = [];
   knex('users').then(function(data){
     //json stuff here?
     var querierlat = parseFloat(data[0].latitude);
     var querierlong = parseFloat(data[0].longitude);
     var querierloc = new GeoPoint(querierlat, querierlong);
 
-    var wrapArr = [];
+
 
     for (var i = 0; i < data.length; i++) {
       var obj = {};
@@ -26,51 +27,41 @@ router.get('/api/users', function (req,res,next) {
       var userlongitude = parseFloat(data[i].longitude);
       var userlocation = new GeoPoint(userlatitude, userlongitude);
       var miles = querierloc.distanceTo(userlocation);
-      var usersnames = data[i].username;
-      var userids = data[i].id;
       if(miles < 50){
+        var usersnames = data[i].username;
+        var userids = data[i].id;
         obj.username = usersnames;
         obj.distance = miles;
         obj.userid = userids;
         wrapArr.push(obj);
-      } else {
-        return 'no matches in your area'
       }
     }
     return wrapArr
   })
   .then(function(data){
-    // console.log(data);
-    var storeArr = [];
+    var promiseArr = [];
     for (let i = 0; i < data.length; i++) {
       // console.log(data[i]);
-
-      let tempData = data[i];
-      // console.log(tempData);
-       knex('users_bands').where('user_id', data[i]['userid'])
-        .fullOuterJoin('bands', 'bands.id', 'users_bands.band_id')
-        .then(function(info) {
-          // console.log(tempData);
-          // console.log('data[i]', data[i]);
-          // console.log(info);
-          var tempArr = [];
-
-          for (var j = 0; j < info.length; j++) {
-            tempArr.push(info[j]['name']);
-          }
-          // console.log(tempData);
-          tempData.bandNames = tempArr;
-          // console.log(tempArr);
-          storeArr.push(tempData);
-          console.log("i is", i);
-          if (i === data.length - 1) {
-            console.log(storeArr);
-            res.json(storeArr);
-          }
-        })
-        // data[i].bandNames = bandArr;
-        // console.log(tempArr);
+      // console.log("initially is", i);
+      promiseArr.push(
+        knex('users_bands').where('user_id', data[i]['userid'])
+              .fullOuterJoin('bands', 'bands.id', 'users_bands.band_id')
+      )
     }
+    return Promise.all(promiseArr);
+  })
+  .then(function(userbands){
+    // console.log(userbands);
+    for (var i = 0; i < userbands.length; i++) {
+      var currentUser = wrapArr[i];
+      currentUser.bandlist = [];
+      for (var j = 0; j < userbands[i].length; j++) {
+        currentUser.bandlist.push(userbands[i][j]['name']);
+      }
+      // console.log(currentUser);
+    }
+    console.log(wrapArr);
+    res.json(wrapArr)
   })
 });
 module.exports = router;
