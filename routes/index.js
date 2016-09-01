@@ -41,8 +41,6 @@ router.get('/api/users', function (req,res,next) {
   .then(function(data){
     var promiseArr = [];
     for (let i = 0; i < data.length; i++) {
-      // console.log(data[i]);
-      // console.log("initially is", i);
       promiseArr.push(
         knex('users_bands').where('user_id', data[i]['userid'])
               .fullOuterJoin('bands', 'bands.id', 'users_bands.band_id')
@@ -51,16 +49,13 @@ router.get('/api/users', function (req,res,next) {
     return Promise.all(promiseArr);
   })
   .then(function(userbands){
-    // console.log(userbands);
     for (var i = 0; i < userbands.length; i++) {
       var currentUser = wrapArr[i];
       currentUser.bandlist = [];
       for (var j = 0; j < userbands[i].length; j++) {
         currentUser.bandlist.push(userbands[i][j]['name']);
       }
-      // console.log(currentUser);
     }
-    console.log(wrapArr);
     res.json(wrapArr)
   })
 });

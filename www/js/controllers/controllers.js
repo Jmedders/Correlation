@@ -1,5 +1,8 @@
-app.controller('mainController', ['$scope', '$http', function($scope, $http){
+app.controller('mainController', ['$scope', '$http', 'MyService', function($scope, $http, MyService){
 
-$scope.view = {};
-$scope.view.boisen = "boisenberry"
+  $scope.view = {};
+  MyService.findUsers().then(function (data){
+    console.log(data);
+    $scope.view.users = data.data;
+  })
 }])
