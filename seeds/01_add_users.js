@@ -18,6 +18,30 @@ exports.seed = function(knex, Promise) {
         longitude: "-105.2939675"
     }),
     knex('users').insert({
+        username: 'jeffrey',
+        password: bcrypt.hashSync('test', 8),
+        latitude: "39.624229",
+        longitude: "-105.262098"
+    }),
+    knex('users').insert({
+        username: 'beta',
+        password: bcrypt.hashSync('test', 8),
+        latitude: "39.7537669",
+        longitude: "-104.9976925"
+    }),
+    knex('users').insert({
+        username: 'estes',
+        password: bcrypt.hashSync('test', 8),
+        latitude: "40.3663772",
+        longitude: "-105.5681676"
+    }),
+    knex('users').insert({
+        username: 'ned',
+        password: bcrypt.hashSync('test', 8),
+        latitude: "39.9651466",
+        longitude: "-105.5212696"
+    }),
+    knex('users').insert({
         username: 'opera',
         password: bcrypt.hashSync('test', 8),
         latitude: "39.9481151",
@@ -40,30 +64,6 @@ exports.seed = function(knex, Promise) {
         password: bcrypt.hashSync('test', 8),
         latitude: "40.0113281",
         longitude: "-75.4075586"
-    }),
-    knex('users').insert({
-        username: 'beta',
-        password: bcrypt.hashSync('test', 8),
-        latitude: "39.7537669",
-        longitude: "-104.9976925"
-    }),
-    knex('users').insert({
-        username: 'estes',
-        password: bcrypt.hashSync('test', 8),
-        latitude: "40.3663772",
-        longitude: "-105.5681676"
-    }),
-    knex('users').insert({
-        username: 'ned',
-        password: bcrypt.hashSync('test', 8),
-        latitude: "39.9651466",
-        longitude: "-105.5212696"
-    }),
-    knex('users').insert({
-        username: 'jeffrey',
-        password: bcrypt.hashSync('test', 8),
-        latitude: "39.624229",
-        longitude: "-105.262098"
     })
   );
 };
