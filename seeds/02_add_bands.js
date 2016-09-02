@@ -22,6 +22,39 @@ exports.seed = function(knex, Promise) {
       name: 'pale saints'
     }),
     knex('bands').insert({
+      name: 'codeine'
+    }),
+    knex('bands').insert({
+      name: 'adult colour'
+    }),
+    knex('bands').insert({
+      name: 'hammock'
+    }),
+    knex('bands').insert({
+      name: 'brian eno'
+    }),
+    knex('bands').insert({
+      name: 'vangelis'
+    }),
+    knex('bands').insert({
+      name: 'gliss'
+    }),
+    knex('bands').insert({
+      name: 'ringo deathstarr'
+    }),
+    knex('bands').insert({
+      name: 'jesus and mary chain'
+    }),
+    knex('bands').insert({
+      name: 'jimi hendrix'
+    }),
+    knex('bands').insert({
+      name: 'carbon based lifeforms'
+    }),
+    knex('bands').insert({
+      name: 'alvvays'
+    }),
+    knex('bands').insert({
       name: 'lush'
     })
   );
