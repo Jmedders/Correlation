@@ -19,8 +19,15 @@
       <br>
       <br>
       {{view.user}}
+      <h2>Users in your area:</h2>
       <div ng-repeat="user in view.users">
-        Users in your area: {{user.username}}
+        <h2>{{user.username}} likes these bands:</h2>
+        <div ng-repeat="band in user.bandlist">
+          <h4>{{band}}</h4>
+        </div>
+
+
+
       </div>
       <h1>{{view.boisen}}</h1>
       <div id="mylocation"></div>
