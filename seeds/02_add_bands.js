@@ -55,6 +55,42 @@ exports.seed = function(knex, Promise) {
       name: 'alvvays'
     }),
     knex('bands').insert({
+      name: 'galaxie 500'
+    }),
+    knex('bands').insert({
+      name: 'luna'
+    }),
+    knex('bands').insert({
+      name: 'halcyon high'
+    }),
+    knex('bands').insert({
+      name: 'monster movie'
+    }),
+    knex('bands').insert({
+      name: 'yo la tengo'
+    }),
+    knex('bands').insert({
+      name: 'skywave'
+    }),
+    knex('bands').insert({
+      name: 'malory'
+    }),
+    knex('bands').insert({
+      name: 'blind mr. jones'
+    }),
+    knex('bands').insert({
+      name: 'technicolor'
+    }),
+    knex('bands').insert({
+      name: 'primal scream'
+    }),
+    knex('bands').insert({
+      name: 'lsd and the search for god'
+    }),
+    knex('bands').insert({
+      name: 'sweet trip'
+    }),
+    knex('bands').insert({
       name: 'lush'
     })
   );
