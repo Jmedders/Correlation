@@ -20,7 +20,7 @@ router.post('/signup', function(req, res, next){
 
   knex('users')
   .where({
-    username: req.body.username;
+    username: req.body.username
   })
   .then(function(data) {
     if(data.length > 0){
@@ -35,7 +35,7 @@ router.post('/signup', function(req, res, next){
         //longitude: ,
       }).returning("*")
       .then(function(user){
-        token = jwt.sign({ id: user[0].id, username: user[0].username, userlat: user[0].latitude, user[0].longitude}, process.env.SECRET);
+        token = jwt.sign({ id: user[0].id, username: user[0].username, userlat: user[0].latitude, userlong: user[0].longitude}, process.env.SECRET);
         console.log(token);
         res.json({token:token});
       }).catch(function(err){
