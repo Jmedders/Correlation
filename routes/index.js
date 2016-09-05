@@ -16,7 +16,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next){
-  console.log(req.body);
   knex('users')
   .where({
     username: req.body.username
@@ -27,7 +26,8 @@ router.post('/login', function(req, res, next){
       console.log('hi no data');
       res.json({errors: 'username or password is incorrect'})
     } else if(bcrypt.compareSync(req.body.password, data.password)){
-      token = jwt.sign({id: data.id, username: data.username, is_admin: data.is_admin}, process.env.SECRET);
+      console.log('line 30', data);
+      token = jwt.sign({id: data.id, username: data.username, userlat: data.latitude, userlong: data.longitude}, process.env.SECRET);
       res.json({token:token});
       console.log("token is: ", token);
     } else {
@@ -39,11 +39,17 @@ router.post('/login', function(req, res, next){
 })
 
 router.get('/api/users', function (req,res,next) {
+
   var wrapArr = [];
   knex('users').then(function(data){
     //json stuff here?
-    var querierlat = parseFloat(data[0].latitude);
-    var querierlong = parseFloat(data[0].longitude);
+    var decoder = jwt.decode(req.token);
+    var originlat = parseFloat(decoder.userlat);
+    var originlong = parseFloat(decoder.userlong);
+    var originid = decoder.id;
+
+    var querierlat = originlat;
+    var querierlong = originlong;
     var querierloc = new GeoPoint(querierlat, querierlong);
 
 
@@ -54,7 +60,7 @@ router.get('/api/users', function (req,res,next) {
       var userlongitude = parseFloat(data[i].longitude);
       var userlocation = new GeoPoint(userlatitude, userlongitude);
       var miles = querierloc.distanceTo(userlocation);
-      if(miles < 50){
+      if(miles < 50 && originid !== data[i].id){
         var usersnames = data[i].username;
         var userids = data[i].id;
         obj.username = usersnames;
