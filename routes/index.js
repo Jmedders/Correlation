@@ -15,6 +15,36 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.post('/signup', function(req, res, next){
+  var password = bcrypt.hashSync(req.body.password, 8);
+
+  knex('users')
+  .where({
+    username: req.body.username;
+  })
+  .then(function(data) {
+    if(data.length > 0){
+      res.json({errors: "username is already taken"});
+    }
+    else {
+      knex('users')
+      .insert({
+        username: req.body.username,
+        password: password
+        // latitude: ,
+        //longitude: ,
+      }).returning("*")
+      .then(function(user){
+        token = jwt.sign({ id: user[0].id, username: user[0].username, userlat: user[0].latitude, user[0].longitude}, process.env.SECRET);
+        console.log(token);
+        res.json({token:token});
+      }).catch(function(err){
+        console.log(err);
+      });
+    }
+  });
+})
+
 router.post('/login', function(req, res, next){
   knex('users')
   .where({
