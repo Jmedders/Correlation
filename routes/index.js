@@ -89,12 +89,25 @@ router.post('/api/bands', function(req,res,next){
           name: band_name
         }).then(function(data){
           console.log('in else', userbandobj);
+        }).catch(function(err){
+          console.log(err);
         })
       }
     }
     return userbandobj;
   }).then(function(info){
-    console.log('on next then', info);
+    console.log(info.id);
+    console.log(info.bandsid[0]);
+    knex('users_bands').insert({
+      user_id: info.id,
+      band_id: info.bandsid[0]
+    }).then(function(){
+      res.redirect("/#/dashboard")
+    }).catch(function(err){
+      console.log(err);
+    })
+  }).catch(function(err){
+    console.log(err);
   })
 })
 
