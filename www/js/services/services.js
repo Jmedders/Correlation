@@ -2,6 +2,13 @@ app.factory('MyService', function($http, $location){
   return {
     findUsers: function(){
       return $http.get('/api/users')
+    },
+    logIn: function(username, password){
+      var user = {};
+      user.username = username;
+      user.password = password;
+      console.log(user);
+      return $http.post('/login', user)
     }
   }
 })
