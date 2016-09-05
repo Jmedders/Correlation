@@ -19,13 +19,13 @@
         <title>Cordova App</title>
     </head>
     <body ng-controller="mainController">
+      <button ng-click="view.logout()" ng-show="user" class="logout">Log Out</button>
       <br>
       <br>
-      <a ng-href="#/login">Login</a>
-      {{view.user}}
+      <a ng-href="#/login" ng-show="!user">Login</a>
       <h2>Users in your area:</h2>
       <div ng-repeat="user in view.users">
-        <h2>{{user.username}} likes these bands:</h2>
+        <h2>{{user.username}} is {{user.distance}} miles away and likes these bands:</h2>
         <div ng-repeat="band in user.bandlist">
           <h4>{{band}}</h4>
         </div>

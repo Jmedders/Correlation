@@ -58,7 +58,7 @@ router.get('/api/users', function (req,res,next) {
         var usersnames = data[i].username;
         var userids = data[i].id;
         obj.username = usersnames;
-        obj.distance = miles;
+        obj.distance = Math.floor(miles);
         obj.userid = userids;
         wrapArr.push(obj);
       }

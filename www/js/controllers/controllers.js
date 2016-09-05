@@ -1,4 +1,4 @@
-app.controller('mainController', ['$scope', '$http', 'MyService', '$location', function($scope, $http, MyService, $location){
+app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '$window', function($scope, $http, MyService, $location, $window){
 
   $scope.view = {};
   MyService.findUsers().then(function (data){
@@ -12,6 +12,7 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', f
         $scope.view.error = res.data.errors;
       }
       else{
+        console.log('hi');
         localStorage.jwt = res.data.token;
         $location.path('/landing');
         $window.location.reload();
