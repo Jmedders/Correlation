@@ -21,6 +21,7 @@
     <body ng-controller="mainController">
       <br>
       <br>
+      <a ng-href="#/login">Login</a>
       {{view.user}}
       <h2>Users in your area:</h2>
       <div ng-repeat="user in view.users">
@@ -34,5 +35,6 @@
       </div>
       <h1>{{view.boisen}}</h1>
       <div id="mylocation"></div>
+      <main ng-view></main>
     </body>
 </html>

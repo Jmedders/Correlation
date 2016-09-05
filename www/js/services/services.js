@@ -7,7 +7,6 @@ app.factory('MyService', function($http, $location){
       var user = {};
       user.username = username;
       user.password = password;
-      console.log(user);
       return $http.post('/login', user)
     }
   }

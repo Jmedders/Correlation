@@ -1,10 +1,10 @@
 'use strict';
 require('dotenv').config();
+var express = require('express');
+var router = express.Router();
 var knex = require('../db/knex');
 var jwt = require('jsonwebtoken');
 var bearerToken = require('express-bearer-token');
-var express = require('express');
-var router = express.Router();
 var bcrypt = require('bcrypt');
 var token;
 var errors;
@@ -15,46 +15,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-
-router.post('/api/signup', function(req, res, next) {
-  var password = bcrypt.hashSync(req.body.password, 8);
-
-  var zip = parseInt(req.body.zip_code);
-
-  knex('users')
-  .where({
-    username: req.body.username
-  })
-  .then(function(data) {
-    if(data.length > 0) {
-      res.json({errors: "username is already taken"});
-    }
-    else {
-      knex('users')
-      .insert({
-        username: req.body.username,
-        password: password,
-        email: req.body.email,
-        street_address: req.body.street_address,
-        city: req.body.city,
-        state: req.body.state,
-        zip_code: zip,
-        is_admin: false
-      }).returning("*")
-      .then(function(user) {
-        token = jwt.sign({ id: user[0].id, username: user[0].username, is_admin: user[0].is_admin}, process.env.SECRET);
-        console.log(token);
-        res.json({token:token});
-        // res.redirect('/bikes');
-      }).catch(function(err) {
-        console.log(err);
-      })
-    }
-  })
-});
-
 router.post('/login', function(req, res, next){
-  console.log('posting');
+  console.log(req.body);
   knex('users')
   .where({
     username: req.body.username
@@ -62,6 +24,7 @@ router.post('/login', function(req, res, next){
   .first()
   .then(function(data){
     if(!data){
+      console.log('hi no data');
       res.json({errors: 'username or password is incorrect'})
     } else if(bcrypt.compareSync(req.body.password, data.password)){
       token = jwt.sign({id: data.id, username: data.username, is_admin: data.is_admin}, process.env.SECRET);
