@@ -3,8 +3,16 @@ var app = angular.module('practiceCordovaApp', ['ngRoute']);
 app.config(function($routeProvider, $httpProvider){
   $httpProvider.interceptors.push('cordovaInterceptor')
   $routeProvider
-    .when('/', {
+    .when('/landing', {
       templateUrl: 'partials/landing.html',
+      controller: 'mainController'
+    })
+    .when('/addaband', {
+      templateUrl: 'partials/addaband.html',
+      controller: 'mainController'
+    })
+    .when('/', {
+      templateUrl: 'partials/login.html',
       controller: 'mainController'
     })
     .when('/login', {

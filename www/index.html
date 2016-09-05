@@ -14,6 +14,8 @@
         <script src="js/services/services.js" charset="utf-8"></script>
         <script src="js/controllers/controllers.js" charset="utf-8"></script>
         <script src="js/directives/directives.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
+        <script src="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
 
         <!-- <script type="text/javascript" src="cordova.js"></script> -->
         <!-- <script type="text/javascript" src="js/index.js"></script> -->
@@ -24,17 +26,6 @@
       <br>
       <br>
       <a ng-href="#/login" ng-show="!user">Login</a>
-      <h2>Users in your area:</h2>
-      <div ng-repeat="user in view.users">
-        <h2>{{user.username}} is {{user.distance}} miles away and likes these bands:</h2>
-        <div ng-repeat="band in user.bandlist">
-          <h4>{{band}}</h4>
-        </div>
-
-
-
-      </div>
-      <div id="mylocation" ng-model="view.russian"></div>
       <main ng-view></main>
     </body>
 </html>

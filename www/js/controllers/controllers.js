@@ -6,6 +6,12 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
     $scope.view.users = data.data;
   })
 
+  $scope.view.addmyband = function(id){
+    MyService.findBands(id, $scope.view.myband).then(function(data){
+      $scope.view.bands = data.data;
+    })
+  }
+
   $scope.view.logIn = function() {
     MyService.logIn($scope.view.username, $scope.view.password).then(function (res) {
       if(res.data.errors){

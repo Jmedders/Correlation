@@ -3,6 +3,13 @@ app.factory('MyService', function($http, $location){
     findUsers: function(){
       return $http.get('/api/users')
     },
+    findBands: function(owner_id, band){
+      var newBandRelation = {};
+      newBandRelation.owner_id = owner_id;
+      newBandRelation.addedband = band;
+      console.log('hi about to go to route');
+      return $http.post('/api/bands', newBandRelation)
+    },
     logIn: function(username, password){
       var user = {};
       user.username = username;

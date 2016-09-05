@@ -68,6 +68,36 @@ router.post('/login', function(req, res, next){
   })
 })
 
+router.post('/api/bands', function(req,res,next){
+  var userbandobj = {};
+  var owner_id =  req.body.owner_id;
+  userbandobj.id = owner_id
+  var band_name = req.body.addedband.toLowerCase();
+  var bandidArr = [];
+  knex('bands').then(function(data){
+    for (var i = 0; i < data.length; i++) {
+      if(band_name == data[i]['name']){
+        console.log('hi youre in the if');
+        bandidArr.push(data[i]['id']);
+        userbandobj.bandsid = bandidArr;
+        break;
+      } else if(band_name != data[i]['name'] && i == data.length-1){
+        console.log('inserting','id is:', i+2);
+        bandidArr.push(i+2)
+        userbandobj.bandsid = bandidArr;
+        knex('bands').insert({
+          name: band_name
+        }).then(function(data){
+          console.log('in else', userbandobj);
+        })
+      }
+    }
+    return userbandobj;
+  }).then(function(info){
+    console.log('on next then', info);
+  })
+})
+
 router.get('/api/users', function (req,res,next) {
 
   var wrapArr = [];
