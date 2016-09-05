@@ -8,6 +8,12 @@ app.factory('MyService', function($http, $location){
       user.username = username;
       user.password = password;
       return $http.post('/login', user)
+    },
+    signup: function(username, password){
+      var newUser = {};
+      newUser.username = username.toLowerCase();
+      newUser.password = password;
+      return $http.post('/signup', newUser)
     }
   }
 })
