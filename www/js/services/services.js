@@ -5,3 +5,15 @@ app.factory('MyService', function($http, $location){
     }
   }
 })
+
+app.service("cordovaInterceptor", function cordovaInterceptor() {
+  return {
+    request: function(config){
+      // console.log(localStorage.jwt);
+      if (localStorage.jwt) {
+        config.headers.Authorization = 'Bearer ' + localStorage.jwt;
+      }
+      return config;
+    }
+  }
+})
