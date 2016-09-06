@@ -179,6 +179,9 @@ router.get('/api/users', function (req,res,next) {
       }
     }
     res.json(wrapArr)
+  }).catch(function(err){
+    console.log(err)
+    return err;
   })
 });
 module.exports = router;

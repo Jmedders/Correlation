@@ -22,7 +22,7 @@
     </head>
     <body ng-controller="mainController">
       <ul id="messages"></ul>
-      <form action="" id="chatting">
+      <form action="" id="chatting" ng-show="user">
         <input autocomplete="off" id="m"><button id="buttonbut">Send</button>
       </form>
       <script>
@@ -45,7 +45,6 @@
       <button ng-click="view.logout()" ng-show="user" class="logout">Log Out</button>
       <br>
       <br>
-      <a ng-href="#/login" ng-show="!user">Login</a>
       <main ng-view></main>
     </body>
 </html>

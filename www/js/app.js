@@ -12,7 +12,7 @@ app.config(function($routeProvider, $httpProvider){
       controller: 'mainController'
     })
     .when('/', {
-      templateUrl: 'partials/login.html',
+      templateUrl: 'partials/intro.html',
       controller: 'mainController'
     })
     .when('/login', {
