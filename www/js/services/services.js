@@ -19,10 +19,12 @@ app.factory('MyService', function($http, $location){
       user.password = password;
       return $http.post('/login', user)
     },
-    signup: function(username, password){
+    signup: function(username, password, userlat, userlong){
       var newUser = {};
       newUser.username = username.toLowerCase();
       newUser.password = password;
+      newUser.lat = userlat;
+      newUser.long = userlong;
       return $http.post('/signup', newUser)
     }
   }

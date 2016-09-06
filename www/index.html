@@ -21,6 +21,7 @@
         <title>Cordova App</title>
     </head>
     <body ng-controller="mainController">
+      <div id="mylocation"></div>
       <ul id="messages"></ul>
       <form action="" id="chatting" ng-show="user">
         <input autocomplete="off" id="m"><button id="buttonbut">Send</button>
@@ -41,6 +42,7 @@
           // });
 
       </script>
+
       <h3 ng-show="user">Hello {{user.username}}</h3>
       <button ng-click="view.logout()" ng-show="user" class="logout">Log Out</button>
       <br>

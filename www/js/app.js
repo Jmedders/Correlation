@@ -1,5 +1,6 @@
 var app = angular.module('practiceCordovaApp', ['ngRoute']);
 
+
 app.config(function($routeProvider, $httpProvider){
   $httpProvider.interceptors.push('cordovaInterceptor')
   $routeProvider

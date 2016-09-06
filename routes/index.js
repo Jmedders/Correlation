@@ -17,7 +17,8 @@ router.get('/', function(req, res, next) {
 
 router.post('/signup', function(req, res, next){
   var password = bcrypt.hashSync(req.body.password, 8);
-
+  console.log('my latitude', req.body.lat);
+  console.log('my longitude', req.body.long);
   knex('users')
   .where({
     username: req.body.username
@@ -30,9 +31,9 @@ router.post('/signup', function(req, res, next){
       knex('users')
       .insert({
         username: req.body.username,
-        password: password
-        // latitude: ,
-        //longitude: ,
+        password: password,
+        latitude: req.body.lat,
+        longitude: req.body.long
       }).returning("*")
       .then(function(user){
         token = jwt.sign({ id: user[0].id, username: user[0].username, userlat: user[0].latitude, userlong: user[0].longitude}, process.env.SECRET);
@@ -142,7 +143,6 @@ router.get('/api/users', function (req,res,next) {
     var querierloc = new GeoPoint(querierlat, querierlong);
 
 
-
     for (var i = 0; i < data.length; i++) {
       var obj = {};
       var userlatitude = parseFloat(data[i].latitude);
@@ -161,6 +161,7 @@ router.get('/api/users', function (req,res,next) {
     return wrapArr
   })
   .then(function(data){
+    console.log(data);
     var promiseArr = [];
     for (let i = 0; i < data.length; i++) {
       promiseArr.push(

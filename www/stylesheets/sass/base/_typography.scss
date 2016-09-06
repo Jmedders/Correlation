@@ -1,7 +1,30 @@
 #loginbut{
   font-size: 3em;
-  background-color: teal;
+  background-color: white;
   width: 10em;
+  color: $seagreen;
+}
+#inputLogin{
+  width: 50vw;
+  height: 10vh;
+  margin-top: 2vh;
+  font-size: 1.25em;
+  text-align: center;
+}
+#loginSubmit{
+  width: 30vw;
+  font-size: 100px;
+  text-align: center;
+  margin-left: 10vw;
+}
+#loginDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  font-size: 3em;
 }
 .flexloginsignin{
   display: flex;
@@ -25,16 +48,15 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-color:$lightmoss;
+    background-image:linear-gradient($lightmoss);
+    background-image:-webkit-linear-gradient($lightmoss);
+    background-image:-ms-linear-gradient($lightmoss);
     background-image:-webkit-gradient(
         linear,
         left top,
         left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
+        color-stop($lightmoss)
     );
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;

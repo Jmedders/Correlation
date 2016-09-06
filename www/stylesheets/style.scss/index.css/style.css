@@ -4,28 +4,6 @@
   width: 10em;
   color: #00A388; }
 
-#inputLogin {
-  width: 50vw;
-  height: 10vh;
-  margin-top: 2vh;
-  font-size: 1.25em;
-  text-align: center; }
-
-#loginSubmit {
-  width: 30vw;
-  font-size: 100px;
-  text-align: center;
-  margin-left: 10vw; }
-
-#loginDiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-  font-size: 3em; }
-
 .flexloginsignin {
   display: flex;
   justify-content: center;
@@ -68,10 +46,6 @@ body {
   -webkit-user-select: none;
   /* prevent copy paste, to allow, change 'none' to 'text' */
   background-color: #79BD8F;
-  background-image: linear-gradient(#79BD8F);
-  background-image: -webkit-linear-gradient(#79BD8F);
-  background-image: -ms-linear-gradient(#79BD8F);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(#79BD8F));
   background-attachment: fixed;
   font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
   font-size: 12px;
@@ -151,4 +125,4 @@ h1 {
   animation: fade 3000ms infinite;
   -webkit-animation: fade 3000ms infinite; }
 
-/*# sourceMappingURL=index.css.map */
+/*# sourceMappingURL=style.css.map */
