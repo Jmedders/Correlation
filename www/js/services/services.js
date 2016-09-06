@@ -6,6 +6,12 @@ app.factory('MyService', function($http, $location){
     myBands: function(){
       return $http.get('/mybands')
     },
+    makeRoom: function(user1, user2){
+      var chatobj = {};
+      chatobj.user1 = user1;
+      chatobj.user2 = user2;
+      return $http.post('/newchat', chatobj)
+    },
     findBands: function(owner_id, band){
       var newBandRelation = {};
       newBandRelation.owner_id = owner_id;

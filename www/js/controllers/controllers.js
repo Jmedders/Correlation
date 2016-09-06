@@ -5,15 +5,19 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
    // });
 
   $scope.view = {};
-  $scope.view.grabchatusername = function(username){
-    $rootScope.chatwith = username;
-    console.log('chatting with',$rootScope.chatwith);
+  $scope.view.grabchatusername = function(userid){
+    // console.log($rootScope.user.id, userid);
+    MyService.makeRoom($rootScope.user.id, userid).then(function(data){
+      console.log()
+      $rootScope.room = data.data;
+    })
     $location.path('/chat');
   }
   $scope.view.sendmsg = function(){
+    console.log($rootScope.room);
     var socket=io();
      $('#chatting').submit(function(){
-       socket.emit('chat message', {userschat: $rootScope.user.username + $rootScope.chatwith, msg: $('#m').val()});
+       socket.emit('chat message', {userschat: $rootScope.room, msg: $('#m').val()});
        $('#m').val('');
        return false;
      });
@@ -22,7 +26,6 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
        $('#messages').append($('<li>').text(msg))
      })
   }
-  $scope.view.russia = "russia"
   $scope.view.userlat = localStorage.lat;
   $scope.view.userlong = localStorage.long;
   MyService.findUsers().then(function (data){

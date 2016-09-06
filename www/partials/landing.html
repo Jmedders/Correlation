@@ -4,7 +4,7 @@
 </div>
 <h2>Users in your area:</h2>
 <div ng-repeat="user in view.users">
-  <h2 ng-click="view.grabchatusername(user.username)">{{user.username}} is {{user.distance}} miles away and likes these bands:</h2>
+  <h2 ng-click="view.grabchatusername(user.userid)">{{user.username}} is {{user.distance}} miles away and likes these bands:</h2>
   <div ng-repeat="band in user.bandlist">
     <h4>{{band}}</h4>
   </div>

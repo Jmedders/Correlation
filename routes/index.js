@@ -128,6 +128,23 @@ router.post('/api/bands', function(req,res,next){
   })
 })
 
+router.post('/newchat', function(req,res,next){
+  var firstuser = req.body.user1;
+  var seconduser = req.body.user2;
+  console.log(firstuser, seconduser);
+  var roomname = firstuser + "_" + seconduser;
+  knex('convos').insert({
+    roomname: roomname,
+    user_id: firstuser,
+    user_id2: seconduser
+  }).then(function(data){
+    console.log('inserted', data);
+    res.json(roomname);
+  }).catch(function(err){
+    console.log(err);
+  })
+})
+
 router.get('/api/users', function (req,res,next) {
 
   var wrapArr = [];
