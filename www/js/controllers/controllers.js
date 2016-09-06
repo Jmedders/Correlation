@@ -1,9 +1,13 @@
-app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '$window', function($scope, $http, MyService, $location, $window){
+app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '$window', '$rootScope', function($scope, $http, MyService, $location, $window, $rootScope){
 
   $scope.view = {};
 
   MyService.findUsers().then(function (data){
     $scope.view.users = data.data;
+  })
+
+  MyService.myBands().then(function(data){
+    $scope.view.mybands = data.data;
   })
 
   $scope.view.addmyband = function(id){

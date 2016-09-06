@@ -1,3 +1,7 @@
+<h2>Your bands</h2>
+<div ng-repeat="yourband in view.mybands">
+  <h4>{{yourband}}</h4>
+</div>
 <h2>Users in your area:</h2>
 <div ng-repeat="user in view.users">
   <h2>{{user.username}} is {{user.distance}} miles away and likes these bands:</h2>

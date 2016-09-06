@@ -3,6 +3,9 @@ app.factory('MyService', function($http, $location){
     findUsers: function(){
       return $http.get('/api/users')
     },
+    myBands: function(){
+      return $http.get('/mybands')
+    },
     findBands: function(owner_id, band){
       var newBandRelation = {};
       newBandRelation.owner_id = owner_id;

@@ -68,6 +68,22 @@ router.post('/login', function(req, res, next){
   })
 })
 
+router.get('/mybands', function(req,res,next){
+  var decoder = jwt.decode(req.token);
+  var user_id = decoder.id;
+  var mybandarr = [];
+  knex('users_bands').where('user_id', user_id)
+        .fullOuterJoin('bands', 'bands.id', 'users_bands.band_id')
+    .then(function(data){
+      for (var i = 0; i < data.length; i++) {
+        mybandarr.push(data[i]['name']);
+      }
+      res.json(mybandarr);
+    }).catch(function(err){
+      console.log(err);
+    })
+});
+
 router.post('/api/bands', function(req,res,next){
   var userbandobj = {};
   var owner_id =  req.body.owner_id;
