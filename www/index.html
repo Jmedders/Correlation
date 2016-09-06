@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.js"></script>
         <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
         <script src="js/index.js" charset="utf-8"></script>
         <script src="js/app.js" charset="utf-8"></script>
@@ -14,14 +15,33 @@
         <script src="js/services/services.js" charset="utf-8"></script>
         <script src="js/controllers/controllers.js" charset="utf-8"></script>
         <script src="js/directives/directives.js" charset="utf-8"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
-        <script src="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
 
         <!-- <script type="text/javascript" src="cordova.js"></script> -->
         <!-- <script type="text/javascript" src="js/index.js"></script> -->
         <title>Cordova App</title>
     </head>
     <body ng-controller="mainController">
+      <ul id="messages"></ul>
+      <form action="" id="chatting">
+        <input autocomplete="off" id="m"><button id="buttonbut">Send</button>
+      </form>
+      <script>
+         var socket=io();
+          $('#chatting').submit(function(){
+            socket.emit('chat message', {username: 'jeff', msg: $('#m').val()});
+            $('#m').val('');
+            return false;
+          });
+          socket.on('new_msg', function(data){
+            console.log('hi')
+            $('#messages').append($('<li>').text(data.msg))
+          })
+          // socket.on('join', function(msg){
+          //   $('#messages').append($('<li>').text(msg));
+          // });
+
+      </script>
+      <h3 ng-show="user">Hello {{user.username}}</h3>
       <button ng-click="view.logout()" ng-show="user" class="logout">Log Out</button>
       <br>
       <br>
