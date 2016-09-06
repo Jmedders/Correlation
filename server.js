@@ -16,22 +16,7 @@ var io = require('socket.io')(http);
 
 app.use(bearerToken());
 
-app.get('/#/', function(req,res,next){
-  res.sendFile(__dirname + '/index.html');
-});
 
-io.sockets.on('connection', function(socket){
-  console.log('user connected');
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
-  socket.on('chat message', function(data){
-    console.log('joining: ' + data.username);
-    socket.join(data.username)
-    // io.emit('join', data.msg)
-    io.in(data.username).emit('new_msg', data.msg)
-  })
-});
 
 
 // view engine setup
@@ -51,6 +36,22 @@ app.use(express.static('www'));
 app.use('/', routes);
 app.use('/users', users);
 
+app.get('/#/', function(req,res,next){
+  res.sendFile(__dirname + '/index.html');
+});
+
+io.sockets.on('connection', function(socket){
+  console.log('user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+  socket.on('chat message', function(data){
+    console.log('joining: ' + data.username);
+    socket.join(data.username)
+    // io.emit('join', data.msg)
+    io.in(data.username).emit('new_msg', data.msg)
+  })
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
