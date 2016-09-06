@@ -1,6 +1,28 @@
 app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '$window', '$rootScope', function($scope, $http, MyService, $location, $window, $rootScope){
 
+   // socket.on('join', function(msg){
+   //   $('#messages').append($('<li>').text(msg));
+   // });
+
   $scope.view = {};
+  $scope.view.grabchatusername = function(username){
+    $rootScope.chatwith = username;
+    console.log('chatting with',$rootScope.chatwith);
+    $location.path('/chat');
+  }
+  $scope.view.sendmsg = function(){
+    var socket=io();
+     $('#chatting').submit(function(){
+       socket.emit('chat message', {userschat: $rootScope.user.username + $rootScope.chatwith, msg: $('#m').val()});
+       $('#m').val('');
+       return false;
+     });
+     socket.on('new_msg', function(msg){
+       console.log('hi')
+       $('#messages').append($('<li>').text(msg))
+     })
+  }
+  $scope.view.russia = "russia"
   $scope.view.userlat = localStorage.lat;
   $scope.view.userlong = localStorage.long;
   MyService.findUsers().then(function (data){

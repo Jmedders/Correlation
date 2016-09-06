@@ -161,7 +161,7 @@ router.get('/api/users', function (req,res,next) {
     return wrapArr
   })
   .then(function(data){
-    console.log(data);
+    // console.log(data);
     var promiseArr = [];
     for (let i = 0; i < data.length; i++) {
       promiseArr.push(
@@ -179,6 +179,7 @@ router.get('/api/users', function (req,res,next) {
         currentUser.bandlist.push(userbands[i][j]['name']);
       }
     }
+    // console.log(wrapArr);
     res.json(wrapArr)
   }).catch(function(err){
     console.log(err)
