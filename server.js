@@ -29,7 +29,7 @@ io.sockets.on('connection', function(socket){
     console.log('joining: ' + data.username);
     socket.join(data.username)
     // io.emit('join', data.msg)
-    io.in('jeff').emit('new_msg', {msg: 'hello'})
+    io.in(data.username).emit('new_msg', data.msg)
   })
 });
 
