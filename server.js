@@ -42,16 +42,15 @@ app.get('/#/chat', function(req,res,next){
 
 io.sockets.on('connection', function(socket){
   console.log('user connected');
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
   socket.on('chat message', function(data){
     console.log('joining: ' + data.userschat);
     socket.join(data.userschat)
     // io.emit('join', data.msg)
     io.in(data.userschat).emit('new_msg', data.msg)
   })
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
-
 });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

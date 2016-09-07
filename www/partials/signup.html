@@ -1,12 +1,11 @@
-<div id ="signupDiv">
+<div id ="loginDiv">
   <form ng-submit="view.signup()" name="signupForm">
-    <h1>Sign up</h1>
-    <h5>Username</h5>
-    <input type="text" name="username" ng-model="view.usernamesignup" placeholder="username" required>
-    <h5>Password</h5>
-    <input type="password" name="password" ng-model="view.passwordsignup" placeholder="password" required>
+    <h1 class="loginwords">Sign up</h1>
+    <input id="inputLogin" type="text" name="username" ng-model="view.usernamesignup" placeholder="username" required>
     <br>
-    <input type="submit" id="signupSubmit">
+    <input id="inputLogin" type="password" name="password" ng-model="view.passwordsignup" placeholder="password" required>
+    <br>
+    <input type="submit" id="loginSubmit">
     <h5 class="logInError">{{view.error}}</h5>
   </form>
 </div>

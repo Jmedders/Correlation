@@ -2,12 +2,25 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
 
 
   $scope.view = {};
+  $scope.view.socket = io();
+  $scope.view.socket.on('new_msg', function(msg){
+    console.log('listening to new msg')
+    $('#messages').append($('<li>').text(msg))
+  });
+  $scope.view.sendmsg = function(){
+    console.log($rootScope.room);
+     $('#chatting').submit(function(){
+       $scope.view.socket.emit('chat message', {userschat: $rootScope.room, msg: $('#m').val()});
+       $('#m').val('');
+       return false;
+     });
+  }
   $scope.view.checkmessage = function(id){
     console.log('hi im checkmessage');
     MyService.messageRooms(id).then(function(data){
       $rootScope.room = data.data[0]['roomname'];
     })
-  }
+  };
     MyService.findUsers().then(function (data){
       $scope.view.users = data.data;
       var usersobjs = $scope.view.users;
@@ -37,19 +50,7 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
     })
     $location.path('/chat');
   }
-  $scope.view.sendmsg = function(){
-    console.log($rootScope.room);
-    var socket=io();
-     $('#chatting').submit(function(){
-       socket.emit('chat message', {userschat: $rootScope.room, msg: $('#m').val()});
-       $('#m').val('');
-       return false;
-     });
-     socket.on('new_msg', function(msg){
-       console.log('listening to new msg')
-       $('#messages').append($('<li>').text(msg))
-     })
-  }
+
   $scope.view.userlat = localStorage.lat;
   $scope.view.userlong = localStorage.long;
 
