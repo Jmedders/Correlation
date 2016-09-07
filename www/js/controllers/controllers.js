@@ -36,15 +36,21 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
   MyService.findUsers().then(function (data){
     $scope.view.users = data.data;
     var usersobjs = $scope.view.users;
+    var mybands = $scope.view.mylistbands;
     comparebands();
-    function comparebands(){;
+    function comparebands(){
       var count = 0;
-      for (var i = 0; i < usersobjs.length; i++) {
-        var usersbandslist = usersobjs[i]['bandlist']
-        for (var j = 0; j < usersbandslist.length; j++) {
-          console.log(usersobjs[i]['username'], usersbandslist[j]);
+      for (var i = 0; i < mybands.length; i++) {
+        for (var j = 0; j < usersobjs.length; j++) {
+          var usersbandslist = usersobjs[j]['bandlist']
+          for (var k = 0; k < usersbandslist.length; k++) {
+            if (mybands[i] == usersbandslist[k]) {
+              console.log('hey match!!', usersobjs[j]['username'], usersbandslist[k]);
+            }
+          }
         }
       }
+
     }
 
   })
