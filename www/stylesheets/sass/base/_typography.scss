@@ -2,6 +2,48 @@
   border-bottom-style: solid;
   border-bottom-color: $onyx;
   border-bottom-width: thick;
+  text-transform: uppercase;
+}
+#topleft {
+  margin-top: 10px;
+}
+.myband{
+  &:hover{
+    color: $beaublue;
+  }
+}
+#leftie {
+  float: left;
+  width: 30%;
+  font-size: 2em;
+  margin-left: 2em;
+  height: 100vh;
+  border-right-style: solid;
+  border-right-color: $onyx;
+  border-right-width: thin;
+}
+#rightie {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#labelrightie {
+  font-size: 2em;
+}
+.matchedusers{
+  font-size: 2em;
+}
+.usersbands{
+  font-size: 1.5em;
+  &:hover {
+    color: $beaublue;
+  }
+}
+#rightieinput {
+  width: 10%;
+  font-size: 2.5em;
 }
 #title {
   margin-top: 10px;
@@ -13,11 +55,26 @@
   width: 7em;
   height: 2.1em;
   &:hover {
-    background: $wintergreen;
+    background: $beaublue;
   }
+}
+.leftieinput{
+  font-size: 1em;
+  text-align: center;
+}
+.leftiesubmit{
+  width: 75%;
+  font-size: 1.25em;
+}
+#leftieform {
+  display: flex;
+  align-items: flex-start;
+  text-align: center;
+  flex-direction: column;
 }
 .headername {
   font-size: 2em;
+  text-align: center;
 }
 #titleDiv{
   display: inline-block;
@@ -41,9 +98,14 @@
 }
 #loginSubmit{
   width: 30vw;
-  font-size: 100px;
+  padding: 10em;
+  font-size: 400em;
   text-align: center;
   margin-left: 10vw;
+}
+.loginwords{
+  text-align: center;
+  font-size: 1.5em;
 }
 #loginDiv{
   display: flex;
@@ -68,7 +130,7 @@
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;;
+  box-sizing: border-box;
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
@@ -92,7 +154,6 @@ body {
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
     width:100%;
 }
 
@@ -120,14 +181,6 @@ body {
     }
 }
 
-h1 {
-    font-size:24px;
-    font-weight:normal;
-    margin:0px;
-    overflow:visible;
-    padding:0px;
-    text-align:center;
-}
 
 .event {
     border-radius:4px;

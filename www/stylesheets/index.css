@@ -1,7 +1,46 @@
 #headerInfo {
   border-bottom-style: solid;
   border-bottom-color: #373e40;
-  border-bottom-width: thick; }
+  border-bottom-width: thick;
+  text-transform: uppercase; }
+
+#topleft {
+  margin-top: 10px; }
+
+.myband:hover {
+  color: #b7d5d4; }
+
+#leftie {
+  float: left;
+  width: 30%;
+  font-size: 2em;
+  margin-left: 2em;
+  height: 100vh;
+  border-right-style: solid;
+  border-right-color: #373e40;
+  border-right-width: thin; }
+
+#rightie {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
+#labelrightie {
+  font-size: 2em; }
+
+.matchedusers {
+  font-size: 2em; }
+
+.usersbands {
+  font-size: 1.5em; }
+  .usersbands:hover {
+    color: #b7d5d4; }
+
+#rightieinput {
+  width: 10%;
+  font-size: 2.5em; }
 
 #title {
   margin-top: 10px;
@@ -13,10 +52,25 @@
   width: 7em;
   height: 2.1em; }
   .headerbutton:hover {
-    background: #488286; }
+    background: #b7d5d4; }
+
+.leftieinput {
+  font-size: 1em;
+  text-align: center; }
+
+.leftiesubmit {
+  width: 75%;
+  font-size: 1.25em; }
+
+#leftieform {
+  display: flex;
+  align-items: flex-start;
+  text-align: center;
+  flex-direction: column; }
 
 .headername {
-  font-size: 2em; }
+  font-size: 2em;
+  text-align: center; }
 
 #titleDiv {
   display: inline-block; }
@@ -40,9 +94,14 @@
 
 #loginSubmit {
   width: 30vw;
-  font-size: 100px;
+  padding: 10em;
+  font-size: 400em;
   text-align: center;
   margin-left: 10vw; }
+
+.loginwords {
+  text-align: center;
+  font-size: 1.5em; }
 
 #loginDiv {
   display: flex;
@@ -105,7 +164,6 @@ body {
   height: 100%;
   margin: 0px;
   padding: 0px;
-  text-transform: uppercase;
   width: 100%; }
 
 /* Portrait layout (default) */
@@ -136,14 +194,6 @@ body {
     margin: -90px 0px 0px -198px;
     /* offset vertical: half of image height */
     /* offset horizontal: half of image width and text area width */ } }
-h1 {
-  font-size: 24px;
-  font-weight: normal;
-  margin: 0px;
-  overflow: visible;
-  padding: 0px;
-  text-align: center; }
-
 .event {
   border-radius: 4px;
   -webkit-border-radius: 4px;

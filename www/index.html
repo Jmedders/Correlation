@@ -27,6 +27,7 @@
         </div>
         <div id="welcomeDiv">
           <h3 ng-show="user" class="headername">Welcome {{user.username}}</h3>
+          <a ng-show="user" ng-href="/#/landing"><button class="headerbutton">Home</button></a>
           <a ng-show="user" ng-click="view.checkmessage(user.id)" ng-href="/#/chat"><button class="headerbutton">Check chat</button></a>
           <button class="headerbutton" ng-click="view.logout()" ng-show="user">Log Out</button>
         </div>
