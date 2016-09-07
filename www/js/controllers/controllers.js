@@ -46,7 +46,7 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
        return false;
      });
      socket.on('new_msg', function(msg){
-       console.log('hi')
+       console.log('listening to new msg')
        $('#messages').append($('<li>').text(msg))
      })
   }
