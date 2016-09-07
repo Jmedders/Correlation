@@ -10,6 +10,9 @@
 .myband:hover {
   color: #b7d5d4; }
 
+li {
+  font-size: 2em; }
+
 #leftie {
   float: left;
   width: 30%;
