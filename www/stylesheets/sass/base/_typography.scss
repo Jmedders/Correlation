@@ -1,3 +1,31 @@
+#headerInfo {
+  border-bottom-style: solid;
+  border-bottom-color: $onyx;
+  border-bottom-width: thick;
+}
+#title {
+  margin-top: 10px;
+  font-size: 3.5em;
+  text-align: center;
+}
+.headerbutton {
+  font-size: 1.25em;
+  width: 7em;
+  height: 2.1em;
+  &:hover {
+    background: $wintergreen;
+  }
+}
+.headername {
+  font-size: 2em;
+}
+#titleDiv{
+  display: inline-block;
+}
+#welcomeDiv{
+  display: inline-block;
+  float: right;
+}
 #loginbut{
   font-size: 3em;
   background-color: white;

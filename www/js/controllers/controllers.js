@@ -55,13 +55,13 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
 
 
   MyService.myBands().then(function(data){
-
     $scope.view.mylistbands = data.data;
   })
 
   $scope.view.addmyband = function(id){
     MyService.findBands(id, $scope.view.myband).then(function(data){
       $scope.view.bands = data.data;
+      $window.location.reload();
     })
   }
 
