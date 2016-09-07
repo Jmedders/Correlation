@@ -2,8 +2,9 @@
 <div ng-repeat="yourband in view.mylistbands">
   <h4>{{yourband}}</h4>
 </div>
-<form name="friendForm">
+<form name="friendForm" ng-submit="view.inquire()">
 <input type="number" min="1" max="10" ng-model="view.inquirenum" required>
+<input type="submit">
 </form>
 <h2>Users in your area:</h2>
 <div ng-repeat="user in view.users">

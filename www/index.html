@@ -21,9 +21,11 @@
         <title>Cordova App</title>
     </head>
     <body>
-      <h3 ng-show="user">Hello {{user.username}}</h3>
-      <a ng-click="view.checkmessage(user.id)"ng-href="/#/chat"><button>Check chat</button></a>
-      <button ng-click="view.logout()" ng-show="user" class="logout">Log Out</button>
+      <div ng-controller="mainController">
+        <h3 ng-show="user">Hello {{user.username}}</h3>
+        <a ng-click="view.checkmessage(user.id)" ng-href="/#/chat"><button>Check chat</button></a>
+        <button class="logout" ng-click="view.logout()" ng-show="user">Log Out</button>
+      </div>
       <br>
       <br>
       <main ng-view></main>
