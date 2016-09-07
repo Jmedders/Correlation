@@ -23,7 +23,7 @@
     <body>
       <div ng-controller="mainController">
         <h3 ng-show="user">Hello {{user.username}}</h3>
-        <a ng-click="view.checkmessage(user.id)" ng-href="/#/chat"><button>Check chat</button></a>
+        <a ng-show="user" ng-click="view.checkmessage(user.id)" ng-href="/#/chat"><button>Check chat</button></a>
         <button class="logout" ng-click="view.logout()" ng-show="user">Log Out</button>
       </div>
       <br>

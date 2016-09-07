@@ -8,7 +8,6 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
       $rootScope.room = data.data[0]['roomname'];
     })
   }
-  $scope.view.inquire = function(){
     MyService.findUsers().then(function (data){
       $scope.view.users = data.data;
       var usersobjs = $scope.view.users;
@@ -30,7 +29,6 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
       }
       // console.log($scope.view.users);
     })
-  }
   $scope.view.grabchatusername = function(userid){
     // console.log($rootScope.user.id, userid);
     MyService.makeRoom($rootScope.user.id, userid).then(function(data){
