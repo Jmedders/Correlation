@@ -39,18 +39,18 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
     var mybands = $scope.view.mylistbands;
     comparebands();
     function comparebands(){
-      var count = 0;
       for (var i = 0; i < mybands.length; i++) {
         for (var j = 0; j < usersobjs.length; j++) {
           var usersbandslist = usersobjs[j]['bandlist']
           for (var k = 0; k < usersbandslist.length; k++) {
             if (mybands[i] == usersbandslist[k]) {
-              console.log('hey match!!', usersobjs[j]['username'], usersbandslist[k]);
+              usersobjs[j]['count']++;
+              console.log('hey match!!', usersobjs[j]['username'], usersobjs[j]['count'], usersbandslist[k]);
             }
           }
         }
       }
-
+      console.log(usersobjs);
     }
 
   })

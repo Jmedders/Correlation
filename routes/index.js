@@ -180,6 +180,7 @@ router.get('/api/users', function (req,res,next) {
         obj.username = usersnames;
         obj.distance = Math.floor(miles);
         obj.userid = userids;
+        obj.count = 0;
         wrapArr.push(obj);
       }
     }
