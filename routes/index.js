@@ -141,9 +141,17 @@ router.post('/newchat', function(req,res,next){
     console.log('inserted', data);
     res.json(roomname);
   }).catch(function(err){
-    console.log(err);
+    res.json(roomname)
   })
 })
+
+router.post('/messages', function(req,res,next){
+  var myid = req.body.myid;
+  knex('convos').where('user_id', myid).orWhere('user_id2', myid)
+  .then(function(data){
+    res.json(data)
+  })
+});
 
 router.get('/api/users', function (req,res,next) {
 

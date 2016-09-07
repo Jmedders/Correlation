@@ -5,11 +5,16 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
    // });
 
   $scope.view = {};
+  $scope.view.checkmessage = function(id){
+    MyService.messageRooms(id).then(function(data){
+      $rootScope.room = data.data[0]['roomname'];
+    })
+  }
   $scope.view.grabchatusername = function(userid){
     // console.log($rootScope.user.id, userid);
     MyService.makeRoom($rootScope.user.id, userid).then(function(data){
-      console.log()
       $rootScope.room = data.data;
+      console.log($rootScope.room)
     })
     $location.path('/chat');
   }
