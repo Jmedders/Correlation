@@ -2,10 +2,16 @@
 <div ng-repeat="yourband in view.mylistbands">
   <h4>{{yourband}}</h4>
 </div>
+<form ng-submit="view.inquire()">
+<input type="number" min="1" max="10" ng-model="view.inquirenum">
+<input type="submit">
+</form>
 <h2>Users in your area:</h2>
 <div ng-repeat="user in view.users">
-  <h2 ng-click="view.grabchatusername(user.userid)">{{user.username}} is {{user.distance}} miles away and likes these bands:</h2>
-  <div ng-repeat="band in user.bandlist">
-    <h4>{{band}}</h4>
+  <div ng-show="user.count >= view.inquirenum">
+    <h2 ng-click="view.grabchatusername(user.userid)">{{user.username}} is {{user.distance}} miles away and likes these bands:</h2>
+    <div ng-repeat="band in user.bandlist">
+      <h4>{{band}}</h4>
+    </div>
   </div>
 </div>
