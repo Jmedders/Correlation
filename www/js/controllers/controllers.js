@@ -35,10 +35,23 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
   $scope.view.userlong = localStorage.long;
   MyService.findUsers().then(function (data){
     $scope.view.users = data.data;
+    var usersobjs = $scope.view.users;
+    comparebands();
+    function comparebands(){;
+      var count = 0;
+      for (var i = 0; i < usersobjs.length; i++) {
+        var usersbandslist = usersobjs[i]['bandlist']
+        for (var j = 0; j < usersbandslist.length; j++) {
+          console.log(usersobjs[i]['username'], usersbandslist[j]);
+        }
+      }
+    }
+
   })
 
   MyService.myBands().then(function(data){
-    $scope.view.mybands = data.data;
+
+    $scope.view.mylistbands = data.data;
   })
 
   $scope.view.addmyband = function(id){
