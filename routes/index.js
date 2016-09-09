@@ -82,6 +82,7 @@ router.get('/mybands', function(req,res,next){
       res.json(mybandarr);
     }).catch(function(err){
       console.log(err);
+      res.json(err);
     })
 });
 
