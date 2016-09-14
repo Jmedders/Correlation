@@ -33,9 +33,10 @@ var app = {
 app.initialize();
 
  var onSuccess = function(position) {
-   var divTarget = document.getElementById('mylocation');
-     divTarget.innerHTML = 'Latitude: '          + position.coords.latitude          + '\n' +
-           'Longitude: '         + position.coords.longitude         + '\n';
+   localStorage.setItem('lat', position.coords.latitude.toString()); // Pass a key name and its value to add or update that key.
+   localStorage.setItem('long', position.coords.longitude.toString());
+  //  var divTarget = document.getElementById('mylocation');
+  //    divTarget.innerHTML =  position.coords.latitude + " " + position.coords.longitude;
  };
 
  // onError Callback receives a PositionError object
