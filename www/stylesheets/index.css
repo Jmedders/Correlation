@@ -46,6 +46,7 @@ li {
   font-size: 2.5em; }
 
 #title {
+  margin-left: 20px;
   margin-top: 10px;
   font-size: 3.5em;
   text-align: center; }
@@ -97,8 +98,6 @@ li {
 
 #loginSubmit {
   width: 30vw;
-  /*padding: 10em;*/
-  /*font-size: 400em;*/
   text-align: center;
   margin-left: 10vw; }
 
