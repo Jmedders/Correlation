@@ -206,7 +206,7 @@ router.get('/api/users', function (req,res,next) {
         currentUser.bandlist.push(userbands[i][j]['name']);
       }
     }
-    console.log('line 208: 'wrapArr);
+    console.log('line 208: ', wrapArr);
     res.json(wrapArr)
   }).catch(function(err){
     console.log(err)
