@@ -155,19 +155,19 @@ router.post('/messages', function(req,res,next){
 });
 
 router.get('/api/users', function (req,res,next) {
-  console.log('line 158: hi heroku');
   var wrapArr = [];
   knex('users').then(function(data){
     //json stuff here?
     var decoder = jwt.decode(req.token);
     var originlat = parseFloat(decoder.userlat);
     var originlong = parseFloat(decoder.userlong);
+    console.log("line 164:", originlat, originlong);
     var originid = decoder.id;
 
     var querierlat = originlat;
     var querierlong = originlong;
     var querierloc = new GeoPoint(querierlat, querierlong);
-
+    console.log("line 170", querierloc);
 
     for (var i = 0; i < data.length; i++) {
       var obj = {};
