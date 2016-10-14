@@ -17,8 +17,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/signup', function(req, res, next){
   var password = bcrypt.hashSync(req.body.password, 8);
-  console.log('my latitude', req.body.lat);
-  console.log('my longitude', req.body.long);
   knex('users')
   .where({
     username: req.body.username
@@ -37,7 +35,6 @@ router.post('/signup', function(req, res, next){
       }).returning("*")
       .then(function(user){
         token = jwt.sign({ id: user[0].id, username: user[0].username, userlat: user[0].latitude, userlong: user[0].longitude}, process.env.SECRET);
-        console.log(token);
         res.json({token:token});
       }).catch(function(err){
         console.log(err);
@@ -54,13 +51,10 @@ router.post('/login', function(req, res, next){
   .first()
   .then(function(data){
     if(!data){
-      console.log('hi no data');
       res.json({errors: 'username or password is incorrect'})
     } else if(bcrypt.compareSync(req.body.password, data.password)){
-      console.log('line 30', data);
       token = jwt.sign({id: data.id, username: data.username, userlat: data.latitude, userlong: data.longitude}, process.env.SECRET);
       res.json({token:token});
-      console.log("token is: ", token);
     } else {
       res.json({errors: 'username or password is incorrect'})
     }
@@ -95,18 +89,15 @@ router.post('/api/bands', function(req,res,next){
   knex('bands').then(function(data){
     for (var i = 0; i < data.length; i++) {
       if(band_name == data[i]['name']){
-        console.log('hi youre in the if');
         bandidArr.push(data[i]['id']);
         userbandobj.bandsid = bandidArr;
         break;
       } else if(band_name != data[i]['name'] && i == data.length-1){
-        console.log('inserting','id is:', i+2);
         bandidArr.push(i+2)
         userbandobj.bandsid = bandidArr;
         knex('bands').insert({
           name: band_name
         }).then(function(data){
-          console.log('in else', userbandobj);
         }).catch(function(err){
           console.log(err);
         })
@@ -114,8 +105,6 @@ router.post('/api/bands', function(req,res,next){
     }
     return userbandobj;
   }).then(function(info){
-    console.log(info.id);
-    console.log(info.bandsid[0]);
     knex('users_bands').insert({
       user_id: info.id,
       band_id: info.bandsid[0]
@@ -161,14 +150,11 @@ router.get('/api/users', function (req,res,next) {
     var decoder = jwt.decode(req.token);
     var originlat = parseFloat(decoder.userlat);
     var originlong = parseFloat(decoder.userlong);
-    console.log("line 164:", originlat, originlong);
     var originid = decoder.id;
 
     var querierlat = originlat;
     var querierlong = originlong;
     var querierloc = new GeoPoint(querierlat, querierlong);
-    console.log("line 170", querierloc);
-    console.log('line 171: ');
     for (var i = 0; i < data.length; i++) {
       var obj = {};
       var userlatitude = parseFloat(data[i].latitude);
@@ -183,10 +169,8 @@ router.get('/api/users', function (req,res,next) {
         obj.userid = userids;
         obj.count = 0;
         wrapArr.push(obj);
-        console.log('line 186: wrapArr', wrapArr);
       }
     }
-    console.log('line 187', wrapArr);
     return wrapArr
   })
   .then(function(data){
@@ -208,10 +192,8 @@ router.get('/api/users', function (req,res,next) {
         currentUser.bandlist.push(userbands[i][j]['name']);
       }
     }
-    console.log('line 208: ', wrapArr);
     res.json(wrapArr)
   }).catch(function(err){
-    console.log('line 214', err)
     return err;
   })
 });
