@@ -50,11 +50,12 @@ li {
   margin-left: 20px;
   margin-top: 10px;
   font-size: 3.5em;
-  text-align: center; }
+  text-align: center;
+  color: #600000; }
 
 .headerbutton {
   font-size: 1.25em;
-  width: 7em;
+  width: 8em;
   height: 2.1em; }
   .headerbutton:hover {
     background: #b7d5d4; }
