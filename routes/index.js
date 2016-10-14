@@ -155,7 +155,6 @@ router.post('/messages', function(req,res,next){
 });
 
 router.get('/api/users', function (req,res,next) {
-
   var wrapArr = [];
   knex('users').then(function(data){
     //json stuff here?

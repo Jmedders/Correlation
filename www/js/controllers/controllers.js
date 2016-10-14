@@ -16,7 +16,6 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
      });
   }
   $scope.view.checkmessage = function(id){
-    console.log('hi im checkmessage');
     MyService.messageRooms(id).then(function(data){
       $rootScope.room = data.data[0]['roomname'];
     })
@@ -24,6 +23,7 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
 
   $scope.view.inquire = function(){
     MyService.findUsers().then(function (data){
+      console.log(data.data);
       $scope.view.users = data.data;
       var usersobjs = $scope.view.users;
       var mybands = $scope.view.mylistbands;
