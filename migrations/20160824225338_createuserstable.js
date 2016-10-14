@@ -4,8 +4,8 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary();
     table.string('username').notNullable().unique();
     table.string('password').notNullable();
-    table.string('latitude');
-    table.string('longitude');
+    table.string('latitude').notNullable();
+    table.string('longitude').notNullable();
   })
 };
 
