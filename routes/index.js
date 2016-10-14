@@ -174,9 +174,9 @@ router.get('/api/users', function (req,res,next) {
       var userlatitude = parseFloat(data[i].latitude);
       var userlongitude = parseFloat(data[i].longitude);
       var userlocation = new GeoPoint(userlatitude, userlongitude);
-      console.log('line 177:', userlocation);
       var miles = querierloc.distanceTo(userlocation);
       if(miles < 50 && originid !== data[i].id){
+        console.log('entering miles', miles);
         var usersnames = data[i].username;
         var userids = data[i].id;
         obj.username = usersnames;
