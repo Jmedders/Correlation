@@ -176,7 +176,6 @@ router.get('/api/users', function (req,res,next) {
       var userlocation = new GeoPoint(userlatitude, userlongitude);
       var miles = querierloc.distanceTo(userlocation);
       if(miles < 50 && originid !== data[i].id){
-        console.log('entering miles', miles);
         var usersnames = data[i].username;
         var userids = data[i].id;
         obj.username = usersnames;
@@ -184,6 +183,7 @@ router.get('/api/users', function (req,res,next) {
         obj.userid = userids;
         obj.count = 0;
         wrapArr.push(obj);
+        console.log('line 186: wrapArr', wrapArr);
       }
     }
     console.log('line 187', wrapArr);
