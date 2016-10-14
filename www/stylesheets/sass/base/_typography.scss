@@ -1,7 +1,7 @@
 #headerInfo {
-  border-bottom-style: solid;
-  border-bottom-color: $onyx;
-  border-bottom-width: thick;
+  // border-bottom-style: solid;
+  // border-bottom-color: $onyx;
+  // border-bottom-width: thick;
   text-transform: uppercase;
 }
 #topleft {
@@ -11,6 +11,10 @@
   &:hover{
     color: $beaublue;
   }
+}
+#border {
+  border-top: 3px groove gray;
+  clear: both;
 }
 li{
   font-size: 2em;

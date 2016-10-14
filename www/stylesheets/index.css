@@ -1,7 +1,4 @@
 #headerInfo {
-  border-bottom-style: solid;
-  border-bottom-color: #373e40;
-  border-bottom-width: thick;
   text-transform: uppercase; }
 
 #topleft {
@@ -9,6 +6,10 @@
 
 .myband:hover {
   color: #b7d5d4; }
+
+#border {
+  border-top: 3px groove gray;
+  clear: both; }
 
 li {
   font-size: 2em; }
