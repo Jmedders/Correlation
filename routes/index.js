@@ -168,12 +168,13 @@ router.get('/api/users', function (req,res,next) {
     var querierlong = originlong;
     var querierloc = new GeoPoint(querierlat, querierlong);
     console.log("line 170", querierloc);
-
+    console.log('line 171: ');
     for (var i = 0; i < data.length; i++) {
       var obj = {};
       var userlatitude = parseFloat(data[i].latitude);
       var userlongitude = parseFloat(data[i].longitude);
       var userlocation = new GeoPoint(userlatitude, userlongitude);
+      console.log('line 177:', userlocation);
       var miles = querierloc.distanceTo(userlocation);
       if(miles < 50 && originid !== data[i].id){
         var usersnames = data[i].username;
