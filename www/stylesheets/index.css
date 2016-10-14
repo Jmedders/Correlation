@@ -50,12 +50,7 @@ li {
   margin-left: 20px;
   margin-top: 10px;
   font-size: 3.5em;
-  text-align: center;
-  color: #600000; }
-
-#messages {
-  margin-left: 20px;
-  list-style: none; }
+  text-align: center; }
 
 .headerbutton {
   font-size: 1.25em;
