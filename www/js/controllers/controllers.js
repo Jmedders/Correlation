@@ -22,6 +22,7 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
   };
 
   $scope.view.inquire = function(){
+    console.log('check if coming in');
     MyService.findUsers().then(function (data){
       console.log(data.data);
       $scope.view.users = data.data;
