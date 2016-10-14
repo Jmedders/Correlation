@@ -211,7 +211,7 @@ router.get('/api/users', function (req,res,next) {
     console.log('line 208: ', wrapArr);
     res.json(wrapArr)
   }).catch(function(err){
-    console.log(err)
+    console.log('line 214', err)
     return err;
   })
 });
