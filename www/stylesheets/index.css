@@ -233,11 +233,12 @@ body {
 
 @media screen and (max-width: 875px) {
   #leftie {
+    clear: both;
     display: flex;
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 50vh;
+    height: 60vh;
     justify-content: center;
     align-items: center;
     flex-direction: column; } }
@@ -249,6 +250,7 @@ body {
     padding-right: 10px;
     padding-top: 0;
     margin: 0;
+    margin-top: -20vh;
     width: 100vw;
     justify-content: center;
     align-items: center;
