@@ -22,9 +22,7 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
   };
 
   $scope.view.inquire = function(){
-    console.log('check if coming in');
     MyService.findUsers().then(function (data){
-      console.log(data.data);
       $scope.view.users = data.data;
       var usersobjs = $scope.view.users;
       var mybands = $scope.view.mylistbands;
@@ -47,7 +45,7 @@ app.controller('mainController', ['$scope', '$http', 'MyService', '$location', '
     // console.log($rootScope.user.id, userid);
     MyService.makeRoom($rootScope.user.id, userid).then(function(data){
       $rootScope.room = data.data;
-      console.log($rootScope.room)
+      console.log($rootScope.room);
     })
     $location.path('/chat');
   }

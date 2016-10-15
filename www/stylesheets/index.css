@@ -231,4 +231,30 @@ body {
   animation: fade 3000ms infinite;
   -webkit-animation: fade 3000ms infinite; }
 
+@media screen and (max-width: 875px) {
+  #leftie {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; } }
+@media screen and (max-width: 875px) {
+  #rightie {
+    border-top: 2px groove gray;
+    clear: both;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0;
+    margin: 0;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; } }
+@media screen and (max-width: 875px) {
+  .matchedusers {
+    border-top: 2px groove gray; } }
+
 /*# sourceMappingURL=index.css.map */
