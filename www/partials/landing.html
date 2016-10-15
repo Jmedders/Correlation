@@ -25,8 +25,10 @@
     <div ng-show="user.count >= view.inquirenum">
       <h2 class="matchedusers" ng-click="view.grabchatusername(user.userid)">You matched with {{user.username}} who is {{user.distance}} miles away and likes these bands:</h2>
       <div ng-repeat="band in user.bandlist">
-        <h4 class="usersbands">{{band}}</h4>
+        <h4 class="usersbands" ng-click="view.getSpotify(band)">{{band}}</h4>
       </div>
+
     </div>
   </div>
+  <div ng-bind-html="view.spotifyPlayer"></div>
 </div>
