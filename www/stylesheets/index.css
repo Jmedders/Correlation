@@ -258,5 +258,19 @@ body {
 @media screen and (max-width: 875px) {
   .matchedusers {
     border-top: 2px groove gray; } }
+@media screen and (max-width: 875px) {
+  #title {
+    text-align: center;
+    width: 100vw;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0; } }
+@media screen and (max-width: 875px) {
+  #welcomeDiv {
+    text-align: center;
+    width: 100vw;
+    margin-right: 0;
+    margin-left: 0;
+    padding-bottom: 2vh; } }
 
 /*# sourceMappingURL=index.css.map */
