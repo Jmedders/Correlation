@@ -1,4 +1,4 @@
-app.controller('mainController', ['$scope', 'MyService', '$http', '$sce', '$location', '$window', '$rootScope',  function($scope,  MyService, $http, $sce, $location, $window, $rootScope){
+app.controller('mainController', ['$scope', 'MyService', 'spotifyService', '$sce', '$http', '$location', '$window', '$rootScope',  function($scope,  MyService, spotifyService, $sce, $http, $location, $window, $rootScope){
 
 
   $scope.view = {};
@@ -20,15 +20,14 @@ app.controller('mainController', ['$scope', 'MyService', '$http', '$sce', '$loca
       $rootScope.room = data.data[0]['roomname'];
     })
   };
-  $scope.view.getSpotify = function(band){
-      MyService.tunes(band).then(function(data){
-        console.log('came back from spotify');
-        var spotifyLink = data.data.artists.items[0]["external_urls"]["spotify"];
+  $scope.view.getSpotify = function(bandName) {
+    spotifyService.tunes(bandName).then(function(data){
+      var spotifyLink = data.data.artists.items[0]["external_urls"]["spotify"];
 
-        var spotifyButton = ('<iframe src="https://embed.spotify.com/?uri=' + spotifyLink + '" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>');
-        $scope.view.spotifyPlayer = $sce.trustAsHtml(spotifyButton);
-      });
-  };
+      var spotifyButton = ('<iframe src="https://embed.spotify.com/?uri=' + spotifyLink + '" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>');
+      $scope.view.spotifyPlayer = $sce.trustAsHtml(spotifyButton);
+    });
+  }
 
   $scope.view.inquire = function(){
     MyService.findUsers().then(function (data){

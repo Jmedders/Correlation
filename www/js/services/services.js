@@ -38,7 +38,11 @@ app.factory('MyService', function($http, $location){
       newUser.lat = userlat;
       newUser.long = userlong;
       return $http.post('/signup', newUser)
-    },
+    }
+  }
+})
+app.factory('spotifyService', function($http){
+  return {
     tunes: function(bandName){
       console.log(bandName);
       if(!bandName){
@@ -48,6 +52,7 @@ app.factory('MyService', function($http, $location){
     }
   }
 })
+
 app.service("cordovaInterceptor", function cordovaInterceptor() {
   return {
     request: function(config){
