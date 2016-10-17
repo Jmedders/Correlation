@@ -1,4 +1,4 @@
-var app = angular.module('practiceCordovaApp', ['ngRoute', 'ngSanitize']);
+var app = angular.module('practiceCordovaApp', ['ngRoute']);
 
 
 app.config(function($routeProvider, $httpProvider){

@@ -1,5 +1,12 @@
 app.factory('MyService', function($http, $location){
   return {
+    tunes: function(bandName){
+      console.log(bandName);
+      if(!bandName){
+          bandName = "Slowdive"
+      }
+      return $http.get('https://api.spotify.com/v1/search?query='+ bandName + '&offset=0&limit=20&type=artist')
+    },
     findUsers: function(){
       return $http.get('/api/users')
     },
@@ -38,17 +45,6 @@ app.factory('MyService', function($http, $location){
       newUser.lat = userlat;
       newUser.long = userlong;
       return $http.post('/signup', newUser)
-    }
-  }
-})
-app.factory('spotifyService', function($http){
-  return {
-    tunes: function(bandName){
-      console.log(bandName);
-      if(!bandName){
-          bandName = "Slowdive"
-      }
-      return $http.get('https://api.spotify.com/v1/search?query=' + bandName + '&offset=0&limit=20&type=artist')
     }
   }
 })
