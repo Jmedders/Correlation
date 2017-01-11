@@ -4,7 +4,6 @@ app.controller('mainController', ['$scope', 'MyService', '$http', '$sce', '$loca
   $scope.view = {};
   $scope.view.getSpotify = function(bandName) {
     MyService.tunes(bandName).then(function(data){
-      console.log(data);
       var spotifyLink = data.data.artists.items[0]["external_urls"]["spotify"];
 
       var spotifyButton = ('<iframe src="https://embed.spotify.com/?uri=' + spotifyLink + '" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>');
@@ -56,7 +55,7 @@ app.controller('mainController', ['$scope', 'MyService', '$http', '$sce', '$loca
       $rootScope.room = data.data;
       console.log($rootScope.room);
     })
-    $location.path('/chat');
+    $window.location.href = '/#/chat';
   }
 
   $scope.view.userlat = localStorage.lat;
@@ -81,7 +80,7 @@ if(localStorage.jwt){
       }
       else{
         localStorage.jwt = res.data.token;
-        $location.path('/landing');
+        $window.location.href = '/#/landing';
         $window.location.reload();
       }
     });
@@ -93,15 +92,14 @@ if(localStorage.jwt){
         $scope.view.error = res.data.errors;
       } else {
         localStorage.jwt = res.data.token;
-        $location.path('/landing');
+        $window.location.href = '/#/landing';
         $window.location.reload();
       }
     })
   }
   $scope.view.logout = function() {
-    console.log('hi please work');
     localStorage.clear();
-    $location.path('/');
+    $window.location.href= '/#/';
     $window.location.reload();
   }
 }]);
