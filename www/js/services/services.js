@@ -5,7 +5,13 @@ app.factory('MyService', function($http, $location){
       if(!bandName){
           bandName = "Slowdive"
       }
-      return $http.get('https://api.spotify.com/v1/search?query='+ bandName + '&offset=0&limit=20&type=artist')
+      return $http({
+        method: 'GET',
+        url: 'https://api.spotify.com/v1/search?query='+ bandName + '&offset=0&limit=20&type=artist',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
     },
     findUsers: function(){
       return $http.get('/api/users')
@@ -53,7 +59,7 @@ app.service("cordovaInterceptor", function cordovaInterceptor() {
   return {
     request: function(config){
       // console.log(localStorage.jwt);
-      if (localStorage.jwt) {
+      if (localStorage.jwt && !config.headers.hasOwnProperty('Content-Type')) {
         config.headers.Authorization = 'Bearer ' + localStorage.jwt;
       }
       return config;

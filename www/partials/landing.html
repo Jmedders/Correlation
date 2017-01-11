@@ -1,7 +1,7 @@
 <div id="leftie">
   <h2 id="topleft">Your bands</h2>
   <div ng-repeat="yourband in view.mylistbands">
-    <h4 class="myband">{{yourband}}</h4>
+    <h4 class="myband" ng-click="view.getSpotify(yourband)">{{yourband}}</h4>
   </div>
   <br><br>
   <div id="leftieform">
