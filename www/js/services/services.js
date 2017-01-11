@@ -1,7 +1,6 @@
 app.factory('MyService', function($http, $location){
   return {
     tunes: function(bandName){
-      console.log(bandName);
       if(!bandName){
           bandName = "Slowdive"
       }
