@@ -1,5 +1,8 @@
 #headerInfo {
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  background-color: black;
+  color: #79BD8F;
+}
 
 #topleft {
   margin-top: 10px; }
